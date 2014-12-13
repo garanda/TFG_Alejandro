@@ -1,8 +1,4 @@
-.aux
-.log
-.lof
-.out
-.syntec.gz
+*.syntec.gz
 
 *.aux
 
