@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                 							%%
-%%		Trabajo Fin de Máster.			                       				%%
-%%		Conciliación de Conceptos Formales en Contextos Semánticos.	%%
-%%		Jesús Giráldez Crú									%%
+%%		Trabajo Fin de GRADO		                       				%%
+%%		TITULO 																			%%
+%%		AUTOR												%%
 %%                                                                 							%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -15,35 +15,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \usepackage{palatino}
-\usepackage[dvips]{graphicx} 	% para importar combinados latex
-\usepackage{color}          		% para importar dibujos coloreados
-\usepackage{rotating}        		% para usar \begin{sideways} que rota tabla 90 grados 
-\usepackage{epsfig}          		% para rotar figuras de Xfig  poniendo % \begin{sideways} 
-\usepackage{amsmath}         	% para usar matrix y pmatrix environment
-\usepackage{stmaryrd}        		% para usar la \bigsqcap
-\usepackage{verbatim}        		% para poner salidas de pantallas
-%\usepackage{listings}       	 	% para imprimir codigo fuente
-\usepackage{shortvrb}
-\usepackage{url}
-\usepackage{subfigure}
+\usepackage[dvips]{graphicx} 	  % para importar combinados latex
+\usepackage{color}          		      % para importar dibujos coloreados
+\usepackage{rotating}        		  % para usar \begin{sideways} que rota tabla 90 grados 
+\usepackage{epsfig}          		  % para rotar figuras de Xfig  poniendo % \begin{sideways} 
+\usepackage{amsmath}         	  % para usar matrix y pmatrix environment
+\usepackage{stmaryrd}        		  % para usar la \bigsqcap
+\usepackage{verbatim}        		  % para poner salidas de pantallas
+\usepackage{listings}       	 	  % para imprimir codigo fuente
+\usepackage{shortvrb}				  % 
+\usepackage{url}						  % 
+\usepackage{subfigure}			  % 
 
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Configuracion de paquetes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\renewcommand\lstlistingname{Listado}                   %  default is Listing
+\renewcommand\lstlistingname{Listado}                   %  default is Listing
 %\renewcommand\lstlistlistingname{\'Indice de listados}  %  default is Listings 
 %\renewcommand\thelstlisting{\thechapter .\arabic{lstlisting}} % captionstyle
 
 
-%\lstset{
-%  language=Java,
-%  basicstyle=\small,
-%  keywordstyle=\bfseries,
-%  showstringspaces=false,
-%  numbers=left, 
-%  numberstyle=\tiny, 
-%  stepnumber=1, 
-%  numbersep=5pt,
-%  frame=single}
+\lstset{
+  language=Java,
+  basicstyle=\small,
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+  numbers=left, 
+  numberstyle=\tiny, 
+  stepnumber=1, 
+  numbersep=5pt,
+  frame=single}
 
 
 %%  Configuraciones varias
@@ -77,7 +80,7 @@ ejem-plo Algo-ritmo
 %%  Titulo e Indices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{roman}
-\include{titulo}
+\include{intro/titulo}
 \clearpage
 \pagestyle{plain}
 \tableofcontents
@@ -89,17 +92,12 @@ ejem-plo Algo-ritmo
 \pagenumbering{arabic}
 \pagestyle{fancy}
 
-%\include{prologo}
-\include{intro}
-\include{capitulo1} % Introduccion
-\include{capitulo2} % Estado del arte
-\include{capitulo3} % Sistemas de Etiquetado
-\include{capitulo4} % Algoritmo de Conciliacion
-\include{capitulo5} % Modelo de Datos de Prueba
-\include{capitulo6} % SMA
-\include{capitulo7} % Resultados
-\include{capitulo8} % Conclusiones
-\include{bibliografia}
+%\include{intro/prologo}
+\include{intro/intro}
+\include{cap1/capitulo1}   % 
+\include{cap2/capitulo2}   % 
+\include{cap3/capitulo3}   % 
+\include{biblio/bibliografia}
 
 %%  Apendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,10 +107,10 @@ ejem-plo Algo-ritmo
 
 %%  Bibliografia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\newpage
-%\addcontentsline{toc}{chapter}{Bibliografía}
-%\bibliographystyle{alpha}
-%\bibliography{bibliografia.tex}
+\newpage
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{alpha}
+\bibliography{biblio/bibliografia.tex}
 
 \end{document}
 
