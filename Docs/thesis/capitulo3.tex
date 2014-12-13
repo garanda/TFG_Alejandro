@@ -1,0 +1,82 @@
+\chapter{Extracción de Conocimiento en Sistemas de Etiquetado.}\label{cap:capitulo3}
+
+En este capítulo vamos a ver algunas características de los Sistemas de Etiquetado (SE), se enlazarán estas características con los elementos formales que se han visto en el capítulo anterior; y finalmente se comentarán las relaciones entre usuarios desde el punto de vista del Análisis Formal de Conceptos (AFC).
+
+\section{Estructura de los Sistemas de Etiquetado.}
+
+Existen multitud de Sistemas de Etiquetado. En \cite{smith} se citan un gran número de ejemplos, y se explica las diferentes estructuras de cada uno de ellos.
+
+En este trabajo, vamos a centrarnos en Delicious (\cite{delicious}) como Sistema de Etiquetado, y en la folksonomía que el sistema ofrece a partir de la actuación colaborativa de los usuarios. Tomaremos la definición de folksonomía dada en \cite{jaschke}:
+
+\begin{defi}
+Una {\bf folksonomía} es una tupla ${\cal F} := (U,E,R,Y)$, dónde:
+\begin{itemize}
+	\item $U$, $E$ y $R$ son conjuntos finitos, cuyos elementos son, respectivamente, los usuarios, etiquetas y recursos del sistema. En sistemas como Delicious, los recursos son URLs y las etiquetas son campos de texto.
+	\item $Y$ es una relación ternaria entre ellos; es decir, $Y  \subseteq \{ U \times{E \times{R}}\}$, cuyos elementos se conocen como etiquetaciones.
+\end{itemize}
+\end{defi}
+
+Existe un consenso en cuanto a la estructura de este tipo de sistemas, como se puede ver en diferentes definiciones (como en \cite{golder} o \cite{yeung}).
+
+Como se ha comentado en capítulos anteriores, el sistema se va creando gracias a las aportaciones colaborativas de todos los usuarios, que, unido a las características del sistema (no jerárquico y no exclusivo), potencian su popularidad, lo que a su vez genera nuevos usuarios y nuevas aportaciones; el conjunto de datos está en continuo crecimiento. Sin embargo, el problema de heterogeneidad semántica en cuanto a la etiquetación que cada usuario realiza hace que no se produzca un consenso por parte de todos ellos. Por ello, emergen ciertos métodos de resolución de estos conflictos para un posterior procesado de todo el volumen de datos que el sistema posee, que puede llegar a ser muy útil en algunos casos.
+
+En \cite{golder}, se presentan pruebas empíricas sobre la actividad de los usuarios, expresadas en el número de etiquetas que cada usuario usa, la tasa de crecimiento de cada etiqueta, así como el uso de ciertas URLs y la etiquetación de las mismas.
+
+En cuanto al número de etiquetas, existen comportamientos diferentes. Inicialmente, el número de etiquetas por usuario crece en todos los casos. Sin embargo, llegado un punto, existen usuarios que siguen añadiendo nuevas etiquetas, por lo que este número sigue creciendo; mientras otros estabilizan el número de etiquetas que usan, y todas las etiquetaciones que realizan, las hacen con algunas de las etiquetas ya utilizadas.
+
+Por norma general, el uso de una etiqueta va creciendo a lo largo del tiempo, ya que siempre aparecen nuevos usuarios que comienzan a usar esta etiqueta. En el caso de los enlaces es diferente, ya que normalmente emerge un comportamiento en el cual se produce un momento puntual en el cual se producen muchas etiquetaciones de ese enlace de forma masiva, y luego vuelve a descender para seguir unas tasas más pequeñas. Este crecimiento puntual se suele producir o bien al inicio del ciclo de vida de dicho enlace en el sistema, o bien una vez que ha transcurrido un largo período.
+
+
+
+
+\section{Contextos y Conceptos Formales.}
+
+El estudios de los Sistemas de Etiquetado desde el punto de vista formal ha sido un campo de trabajo muy concurrido en los últimos tiempos, y podemos encontrar una gran variedad de propuestas en diversas publicaciones: en \cite{alonso} se propone un método de extensión de atributos; en \cite{yeung} se ofrece un método para minimizar los efectos de hetereogenidad semántica; en \cite{van} se propone un método para convertir en ontologías estas folkonomías; etc...
+
+En el capítulo~\ref{cap:capitulo2} se han introducido las características de los Contextos formales. Estos contextos están formado por un conjunto $G$ de objetos, un conjunto $M$ de atributos, y una relación binaria $I$ entre ambos.
+
+Existe una analogía clara entre estos Contextos formales y los Sistemas de Etiquetado. De hecho, todo Sistema de Etiquetado puede transformarse en un conjunto de Contextos formales. Formalicémoslo:
+
+\begin{teo}
+Toda folksonomía ${\cal F} := (U,E,R,Y)$ es transformable en un conjunto de Contextos formales ${\cal K}_i := (G_i, M_i, I_i)$ mediante una función $\gga$, de forma que:
+\begin{center}
+	$\gga({\cal F}) = \bigcup \limits_{k=1}^{size(U)} {{\cal K}_{\mbox{\scriptsize \emph{k}}}}$
+\end{center}
+
+La demostración es trivial estableciendo que $G_i \subseteq R$, $M_i \subseteq E$ e $I_i \subseteq (R \times{E})$. Concretamente está relación binaria $I_i$ se consigue fijando el valor de cada usuario en la relación ternaria $Y$; ésta es la razón por la que se obtienen $size(U)$ contextos diferentes. Los conjuntos $G_i$ y $M_i$ están formados por los objetos y atributos que participan en la relación binaria obtenida anteriormente.
+\end{teo}
+
+
+El teorema anterior nos permite transformar un Sistema de Etiquetado (o un subconjunto completo de éstos) en un conjunto de Contextos Formales. En total se obtienen tantos contextos como usuarios forman parte del Sistema de Etiquetado.
+
+En el caso concreto de este trabajo, cada contexto estará formado por un conjunto de enlaces (objetos) y un conjunto de atributos (atributos), que es precisamente lo que cada usuario aporta de forma colaborativa al sistema de Delicious.
+
+Para cada uno de los contextos anteriores, se puede calcular fácilmente los Retículos de Conceptos que representan el contexto, y las Bases Stem asociadas a éstos.
+
+
+
+
+
+
+
+
+\section{Relaciones entre usuarios.}
+
+En la sección anterior se ha visto cómo extraer un conjunto de Contextos (formales) de un Sistema de Etiquetado. Cada uno de estos contextos representa el conocimiento de cada usuario dentro del sistema. Es posible establecer una serie de relaciones entre los usuarios, o más bien, entre los contextos de cada uno de ellos. Las más importantes, que son las que utilizaremos en este trabajo, son: Lenguaje común y Conjunto de Objetos comunes.
+
+\begin{itemize}
+	\item {\bf Lenguaje común}: Dados dos usuarios y los contextos formales de cada uno de ellos, el lenguaje común es el conjunto de atributos que ambos usuarios tienen. Sean $M_1$ y  $M_2$ los conjuntos de atributos de cada usuario respectivamente; el lenguaje común $\cal{L}$ es precisamente la intesección de estos dos conjuntos:
+\begin{center}
+	${\cal L} = M_1 \cap M_2$
+\end{center}
+
+	\item {\bf Conjunto de Objetos comunes}: Dados dos usuarios y los contextos formales de cada uno de ellos, el conjunto de Objetos comunes es el conjunto de objetos que ambos usuarios tienen. Sean $G_1$ y $G_2$ los conjuntos de objetos de cada usuario respectivamente; el conjunto de objetos comunes ${\cal O}$ es precisamente la intersección de estos dos conjuntos:
+\begin{center}
+	${\cal O} = G_1 \cap G_2$
+\end{center}
+\end{itemize}
+
+Además de las dos relaciones anteriores, se pueden establecer otro tipo de relaciones entre usuarios. Se pueden establecer restricciones en las relaciones anteriores para crear nuevas relaciones. Por ejemplo, se puede establecer un lenguaje común reducido entre dos usuarios escogiendo sólo aquellos atributos que, además de pertenecer al lenguaje común, son parte de alguna etiquetación en el mismo enlace para ambos usuarios. Es obvio que este nuevo lenguaje común reducido es bastante más pequeño que aquel en el que no se impone ninguna restricción. Igualmente, se puede crear un conjunto de objetos comunes reducido escogiendo únicamente los enlaces que, además de pertenecer al conjunto inicial de objetos comunes, están etiquetados con una misma etiqueta por ambos usuarios. Igualmente, este último conjunto es mucho más pequeño que el inicial.
+
+Por último, hay que indicar que se pueden establecer tantas relaciones como criterios se quieran inventar. Sin embargo, en este trabajo sólo hemos utilizado las dos anteriores: el Lenguaje común servirá para crear contextos reducidos en los que sólo existan objetos etiquetados con etiquetas pertenecientes a este lenguaje, previo a la conciliación del conocimiento de ambos usuarios; el conjunto de objetos comunes servirá para decidir que pares de usuarios deben realizar conciliación y cuáles no, esto se decidirá en función del tamaño de este conjunto. En este trabajo, únicamente se producirá conciliación entre dos usuarios cuando compartan 3 objetos o más; es decir, cuando esté conjunto de objetos comunes esté formado por 3 o más objetos. 
+

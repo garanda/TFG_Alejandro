@@ -1,0 +1,13 @@
+.aux
+.log
+.lof
+.out
+.syntec.gz
+
+*.aux
+
+*.log
+
+*.out
+
+*.lof

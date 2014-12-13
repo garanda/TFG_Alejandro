@@ -1,0 +1,337 @@
+\documentclass[a4paper,12pt]{book}
+
+%********************* PAQUETES ADICIONALES *******************
+
+% Para poder escribir acentos tal cual
+%\usepackage{isolatin1}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyvrb}
+
+\newcommand{\caja}[1]{
+ \makebox[8mm]{\rule[-1.5ex]{0pt}{6ex}\scriptsize #1}}
+
+\newcommand{\cajaa}[1]{
+ \makebox[18mm]{\rule[-1.5ex]{0pt}{6ex}\scriptsize #1}}
+
+\usepackage{shortvrb}
+%\MakeShortVerb{\ß}
+% \DefineShortVerb{\ß}
+%\MakeShortVerb{\ß}
+
+% Para disponer de m·s sÌmbolos matem·ticos
+\usepackage{amsfonts,amssymb,latexsym,fancyhdr}
+
+% Para que las Ûrdenes como \chapter o \tableofcontents generen 
+% los tÌtulos en espaÒol.
+\usepackage[spanish,activeacute]{babel}
+
+% Una extensiÛn para la definiciÛn de nuevos teoremas
+\usepackage{theorem}
+
+\theorembodyfont{\normalfont}
+\newtheorem{defi}{{\sc Definición}}
+\newtheorem{teo}{{\sc Teorema}}
+
+
+%*********************** FORMATO DE P¡GINA **************************
+
+\voffset          -5mm
+\cfoot{}
+
+\pagestyle{fancy}
+\fancyhead{} 
+\fancyhead[RE]{{\small  \nouppercase{\leftmark}}}
+\fancyhead[LO]{{\small  \nouppercase{\rightmark}}}
+\fancyhead[LE,RO]{\thepage}
+
+
+%==============================================================================
+% Cajas numeradas para incluir cÛdigo
+%==============================================================================
+
+\newlength{\hsbw}
+
+\newcounter{sesioncount}
+\setcounter{sesioncount}{0}
+
+%%%%%%%%%%%%%%%%%%% caja no numerada  %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{sesion*}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+
+%%%%%%%%%%%%%%%%% caja normal numerada  %%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{sesion}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace*{4mm}
+   \em
+   \begingroup}
+  {\endgroup \vspace{4mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+
+%%%%%%%%%%%%%%%%%% caja abierta por debajo %%%%%%%%%%%%%%
+\newenvironment{sesion+}
+  {\begin{flushleft}
+ % \refstepcounter{sesioncount}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace*{-.5pt}
+   \begin{flushright}
+   \rule{0.01in}{.15in}\rule{0.3in}{0.01in}\hspace{-0.35in}
+   \raisebox{0.04in}{\makebox[0.3in][c]{\footnotesize \thesesioncount}}
+                                       % Si pongo \footnotesize\it
+                                       % el numerito sale inclinado
+   \end{flushright}
+   \vspace*{-.47in}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   %\hline
+   \end{tabular}
+   \end{flushleft}}
+
+
+%%%%%%%%%%%% caja abierta por arriba %%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{sesion-}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}%\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   \hline
+   \end{tabular}
+   \end{flushleft}}
+
+\newenvironment{sesionx}
+  {\begin{flushleft}
+   \setlength{\hsbw}{\linewidth}
+   \addtolength{\hsbw}{-\arrayrulewidth}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \addtolength{\hsbw}{-\tabcolsep}
+   \begin{tabular}{@{}|c@{}|@{}}%\hline
+   \begin{minipage}[b]{\hsbw}
+   \vspace{2mm}
+   \begingroup}
+  {\endgroup\vspace{-3mm}
+   \end{minipage} \\
+   %\hline
+   \end{tabular}
+   \end{flushleft}}
+
+
+
+\newcommand{\boxref}[1]
+  {\fbox{\footnotesize \phantom{4}\!\!\!\!\!\! \ref{#1}}}
+%Si pongo \footnotesize\it
+%el numerito sale inclinado
+
+\newcommand{\boxrefdos}[2]
+  {\fbox{\footnotesize \phantom{4}\!\!\!\!\!\! \ref{#1}-\ref{#2}}}
+%Si pongo \footnotesize\it
+%el numerito sale inclinado
+
+\newcommand{\codeindex}[1]{\index{#1@{\tt #1}}}
+
+\newcommand{\labelindex}[1]{\label{#1}\codeindex{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ß Verbatim extendido                                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DefineVerbatimEnvironment{CVerbatim}{Verbatim}
+{ commandchars=\\\{\},
+  codes={\catcode`$=3\catcode`$=3},
+  fontsize=\small,
+  fontfamily=verdana,
+  frame=single}
+
+
+%=======================================================================
+
+%=======================================================================
+
+
+%\renewcommand{\baselinestretch}{1.3}  % espacio y algo 
+\parskip 1ex 
+%\renewcommand{\_}{\bold} 
+\newcommand{\ol}{\overline} 
+\renewcommand{\>}{\vec} 
+\newcommand{\lan}{\langle} 
+\newcommand{\ran}{\rangle} 
+ 
+%LETRAS GRIEGAS 
+\newcommand{\gga}{\alpha} 
+\newcommand{\ggb}{\beta} 
+\newcommand{\ggD}{\Delta} 
+\newcommand{\ggd}{\delta} 
+\newcommand{\gget}{\eta} 
+\newcommand{\gge}{\varepsilon} 
+\newcommand{\ggf}{\varphi} 
+\newcommand{\ggF}{\Phi} 
+\renewcommand{\ggg}{\gamma} 
+\newcommand{\ggG}{\Gamma} 
+\newcommand{\ggk}{\kappa} 
+\newcommand{\ggl}{\lambda} 
+\newcommand{\ggm}{\mu} 
+\newcommand{\ggn}{\nu} 
+\newcommand{\ggps}{\psi} 
+\newcommand{\ggP}{\Pi} 
+\newcommand{\ggp}{\pi} 
+\newcommand{\ggr}{\rho} 
+\newcommand{\ggS}{\Sigma} 
+\newcommand{\ggs}{\sigma} 
+\newcommand{\ggta}{\tau} 
+\newcommand{\ggT}{\Theta} 
+\newcommand{\ggt}{\theta} 
+\newcommand{\ggo}{\omega} 
+\newcommand{\ggO}{\Omega} 
+ 
+% LETRAS CALIGRAFICAS 
+\newcommand{\C}[1]{{\cal #1}}
+\newcommand{\U}{{\cal U}} 
+\newcommand{\W}{{\cal W}} 
+\newcommand{\K}{{\cal K}} 
+ 
+% SIMBOLOS LOGICOS 
+\renewcommand{\le}{\exists} 
+\newcommand{\la}{\forall} 
+\newcommand{\lif}{\to} 
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\Rif}{\Leftarrow} 
+\newcommand{\rif}{\leftarrow}  
+\newcommand{\Lor}{\bigvee} 
+\newcommand{\Land}{\bigwedge} 
+ 
+% SIMBOLOS METALOGICOS 
+\newcommand{\Lif}{\quad \Longrightarrow \quad} 
+\newcommand{\Lifn}{\Longrightarrow} 
+\newcommand{\Liff}{\quad \Longleftrightarrow \quad} 
+\newcommand{\If}{\Longrightarrow} 
+\newcommand{\Lifr}{\quad \Longleftarrow \quad} 
+\newcommand{\Lifrn}{\Longleftarrow} 
+\newcommand{\Liffn}{\Longleftrightarrow} 
+\newcommand{\direc}{\noindent \fbox{$\Longrightarrow$} \quad} 
+\newcommand{\recip}{\noindent \fbox{$\Longleftarrow$} \quad} 
+\newcommand{\impd}[2]{\noindent \fbox{\parbox{1.1in}{(#1) $\Lif$ (#2)}} 
+                       \newline} 
+\newcommand{\Life}{\quad \mid\!\Longrightarrow \quad} 
+\newcommand{\Lifen}{\mid\!\Longrightarrow} 
+\newcommand{\Lifre}{\quad \Longleftarrow\!\mid \quad} 
+\newcommand{\Lifren}{\Longleftarrow\!\mid} 
+\newcommand{\Lifa}{\quad \Uparrow \quad} 
+\newcommand{\Lifan}{\Uparrow} 
+\newcommand{\Lifae}{\underline{\Uparrow}} 
+\newcommand{\Liffa}{\quad \Updownarrow \quad} 
+\newcommand{\Liffan}{\Updownarrow} 
+\newcommand{\Lifab}{\quad \Downarrow \quad} 
+\newcommand{\Lifabn}{\Downarrow} 
+%\newcommand{\nLif}{\quad /\!\!\!\!\!\!\!\Longrightarrow } 
+\newcommand{\nLif}{ \ /\!\!\!\!\!\!\!\Longrightarrow} 
+\newcommand{\Liffp}{\Leftrightarrow} 
+\newcommand{\Lifp}{\mid\!\Rightarrow} 
+\newcommand{\Rlifp}{\Leftarrow\!\mid} 
+ 
+% SECUENCIAS 
+\newcommand{\veca}[2]{#1_1 \dots #1_#2}            %$veca xn$ --> x_1... x_n 
+\newcommand{\vecb}[2]{#1_1, \dots, #1_#2}          %$vecb xn$ --> x_1,..., x_n 
+\newcommand{\vecc}[2]{(#1_1, \dots, #1_#2)}        %$vecc xn$ --> (x_1,..., x_n) 
+ 
+\newcommand{\sust}[4]{#1_{\vecb #2 #4} [\vecb #3 #4]} 
+        %$sust a x t n$ --> a_{x_1,...,x_n}[t_1,...,t_n] 
+\newcommand{\lr}[2]{\lan #1,#2 \ran} 
+ 
+% CONJUNTOS 
+\newcommand{\co}{\subseteq} 
+\newcommand{\coe}{\subset} 
+\newcommand{\pot}[2]{{#1}^{\textstyle #2}} 
+\newcommand{\ale}[1]{\aleph_{#1}} 
+\newcommand{\kkk}[1]{\stackrel{#1}{\smile}} 
+ 
+ 
+ 
+% MODELOS 
+\newcommand{\m}{\models} 
+\newcommand{\te}{\vdash} 
+\newcommand{\inm}{\; \widetilde \subset \;} %inmersion (en infijo) 
+\newcommand{\inme}[2]{\C {#1} \inm \C {#2}} %inmersion 
+\newcommand{\sel}{\; \prec \;} %subestructura elemental (en infijo) 
+\newcommand{\sele}[2]{\C {#1} \sel \C {#2}} %subestructura elemental 
+\newcommand{\iel}{\; \widetilde \prec \;} %inmersion elemental (en infijo) 
+\newcommand{\iele}[2]{\C {#1} \iel \C {#2}} %inmersion elemental 
+\renewcommand{\hom}{\; \simeq \;} 
+\newcommand{\homo}[2]{\C {#1} \hom \C {#2}} %homomorfismo 
+\newcommand{\iso}{\; \cong \;}                   %subestructura 
+\newcommand{\isom}[2]{\C {#1} \iso \C {#2}} %isomorfismo 
+\newcommand{\sub}{\; \coe \;} 
+\newcommand{\sube}[2]{\C {#1} \sub \C {#2}} %subestructura 
+ 
+% FIN DE LINEA 
+\newcommand{\nl}{\newline} 
+ 
+% FLECHAS 
+\newcommand{\lra}{\longrightarrow} 
+\newcommand{\Lra}{\Longrightarrow} 
+\newcommand{\lla}{\longleftarrow} 
+\newcommand{\Lla}{\Longleftarrow} 
+\newcommand{\llra}{\longleftrightarrow} 
+\newcommand{\Llra}{\Longleftrightarrow} 
+ 
+ 
+\newcommand{\dip}{\searrow\!\!\!\!\nwarrow} 
+\newcommand{\dis}{\nearrow\!\!\!\!\swarrow} 
+\newcommand{\udp}{\nwarrow} 
+\newcommand{\ddp}{\searrow} 
+\newcommand{\uds}{\nearrow} 
+\newcommand{\dds}{\swarrow} 
+ 
+\newcommand{\ua}{\uparrow} 
+\newcommand{\da}{\downarrow} 
+ 
+ 
+\newcommand{\uda}{\uparrow\!\!\downarrow} 
+
+%\makeatletter
+%\def\@begintheorem#1#2{\it \trivlist \item[\hskip \labelsep{\em {\bf
+%#2. #1}}] }
+%\makeatother
+
+\usepackage{cmtt}
+\renewcommand{\ttdefault}{cmtt}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "dea"
+%%% End: 

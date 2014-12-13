@@ -1,0 +1,88 @@
+\chapter{Estado del Arte.}\label{cap:capitulo1}
+
+En este capítulo, se introducirá de forma general el estado del arte sobre la clasificación de los datos y la información en Internet, se introducirán los Sistemas de Etiquetado como herramienta de marcación semántica de ciertos datos, se tratarán los diferentes problemas asociados a esta marcación semántica, y finalmente se introducirá la Conciliación de Conceptos como método formal para encontrar conocimiento común entre usuarios.
+
+
+\section{Clasificación del contenido en Internet.}
+
+La organización del contenido en Internet se realiza a menudo a través de marcas en el contenido con términos descriptivos, también llamados \emph{palabras clave} o \emph{etiquetas}. Esta organización permite al usuario ciertas tareas futuras como navegación, filtro o búsquedas. Esta forma de organización no es, ni mucho menos, nueva; sin embargo, sus creadores en el ámbito de Internet, le acuñaron el nombre de {\bf etiquetado}, con el que actualmente se conoce, y que está ganando mucha popularidad en Internet.
+
+Históricamente, la asignación de estas palabras claves para la organización de colecciones o librerías ha sido tarea de una persona experta en la materia que, bajo su criterio, es quién elige el conjunto de palabras clave y la asignación de las mismas a los diferentes recursos, como se explica en \cite{rowley}. En cambio, el etiquetado colaborativo permite que cualquier usuario participe en esta tarea, de forma que cada recurso pueda ser etiquetado con palabras claves por cualquier usuario y por cualquier palabra clave que éstos elijan.
+
+En cuanto a sistemas de clasificación de contenido, se van a distiguir dos tipos: taxonomías y folksonomías.
+
+Las taxonomías son sistemas de clasificación de contenido basados en la categorización de los recursos (o de los elementos, en general). Esta definición se puede entontrar en \cite{smith}, \cite{kim} o \cite{golder}. Estas categorías deben formar un conjunto completo\footnote{Entiéndase \emph{completo} para un ámbito concreto.} y disjunto; de forma que todos los recursos tengan una categoría con la que pueda ser categorizado, y que además, se elimine (o en todo caso, se minimice) las posibles ambigüedades entre varias categorías. La única excepción en este conjunto disjunto se produce debido a la posibilidad de establecer una jerarquía en las categorías, de forma que se establezca una especialización de las mismas. Estos sistemas son, por tanto, jerárquicos y exclusivos. 
+
+En la otra cara de la moneda, encontramos otros sistemas no jerárquicos y no exclusivos: las folksonomías, cuya definición está aproximadamente consensuada. Esta definición se puede consultar en  \cite{smith}, \cite{kim}, \cite{golder}, \cite{gruber} o \cite{knerr}. En este tipo de clasificación, cada recurso es marcado con una serie de etiquetas, que aportan a estos recursos una serie de metadatos semánticos. En \cite{smith}, se comentan los distintos sistemas que incorporan folksonomías como herramientas; y se discute las diferentes restricciones de cada uno de ellos: conjunto de etiquetas restringido o abierto, etiquetación a recursos propios o globales del sistema, etc. En \cite{golder}, se explica la diferencia entre estos sistemas y los anteriores, cuya principal diferencia es la opción de trabajar con interesecciones entre las diferentes categorías que aparecen, consiguiendo una mejor organización de los recursos y evitando posibles duplicidades de los mismos.
+
+Esta diferencia hace que estos sistemas de etiquetado se hayan convertido en una herramienta muy útil en gran cantidad de sistemas que funcionan en Internet, gracias a la versatilidad que ofrecen al usuario, y además, al ser una herramienta colaborativa, se gestiona gracias a las aportaciones de todos los usuarios, sin necesidad de que una persona experta se encargue de esta tarea. Prueba del auge de estas herramientas, es el enorme número de trabajos que hay sobre ellos desde diversos puntos de vista, como el análisis (estadístico) de los modelos de etiquetación realizado en \cite{golder}, la recuperación y navegación por la información realizado en \cite{halpin} o \cite{jaschke}, o el análisis de redes sociales realizado en \cite{mika} o \cite{brooks}.
+
+
+\section{El Etiquetado y la Web Semántica.}
+
+Como se ha comentado en la sección anterior, las folksonomías dotan a cualquier sistema en el que se implanten, de una herramienta colaborativa con la cual organizar el contenido. Además, debido a sus características no jerárquicas y no exclusivas, se evitan problemas derivados de otro tipo de clasificaciones, como las taxonomías. Por último, el carácter colaborativo de estas folksonomías han potenciado su popularidad en la Web 2.0, dónde el usuario es el protagonista y \emph{creador} de la propia web (redes sociales, blogs, sistemas de etiquetado, sistemas para compartir ficheros multimedia, etc.).
+
+Por otra parte, estas folksonomías ofrecen una buena alternativa a la web semántica o las ontologías, como se explica en \cite{golder}. Es cierto que estas opciones generan una mayor cantidad de información semántica referente a los recursos del sistema. En cambio, los sistemas de etiquetado, como las folksonomías generan una información semántica muy pobre, que además es ambigua, como se comenta en \cite{algoritmo} y \cite{golder}; en comparación con un sistema basado en ontologías, por ejemplo. En éste último, el marcado semántico es completo, y el procesado semántico (que es la motivación de este trabajo), sería más fácil.
+
+Sin embargo, el concepto de web semántica puede chocar en algunos aspectos con el carácter colaborativo propio de estas folksonomías de los sistemas de etiquetado. Precisamente, uno de los puntos más enriquecedores de estos sistemas es que la información semántica la generan los usuarios, para ser procesada y/o gestionada por ellos mismos. Si bien no existe una formalización en cuanto a la semantización de la información, el papel que juegan los usuarios es crucial para haber conseguido un desarrollo tran grande (frente a otros sistemas, basados en ontologías por ejemplo, que son propios de otro tipo de casos de estudio).
+
+En cambio, como se introdujo en el capítulo anterior, es necesario cierto procesado de la información, para obtener un mecanismo que formalice la semántica de estos sistemas. Las etiquetas serán los elementos que proporcionen esta formalización.
+
+
+
+
+
+
+\section{Sistemas de Etiquetado.}
+
+En \cite{smith}, se tratan diversos Sistemas de Etiquetado y las diferentes características de cada una de sus arquitecturas.
+
+De forma general, diremos que un Sistema de Etiquetado está compuesto por Recursos, Etiquetas y Usuarios. En nuestro caso de estudio, los recursos estarán disponibles para cualquier usuario, de forma que un recurso pueda estar etiquetado por múltiples usuarios. El conjunto de recursos es abierto; es decir, cualquier usuario puede añadir nuevos recursos al sistema, por lo que este conjunto está continuamente creciendo. Igualmente ocurre en el caso del conjunto de etiquetas, de forma que una etiqueta puede ser usada por múltiples usuarios, y cada usuario puede añadir las etiquetas que desee al sistema.
+
+En el capítulo~\ref{cap:capitulo3}, se verá de forma detallada las características de los Sistemas de Etiquetado que se tratan en este trabajo. El sistema elegido ha sido Delicious (ver \cite{delicious}), dónde los recursos son URLs que los usuarios guardan, y las etiquetas son campos de texto plano. De esta forma, una URL puede haber sido introducida en el sistema por dos usuarios distintos, por lo que este recurso es \emph{compartido} para ambos (aunque tengan etiquetas distintas para cada uno de ellos). De igual forma, dos usuarios pueden tener etiquetas comunes (o no), que hayan introducido en el sistema.
+
+
+
+
+\section{El Problema de la Heterogeneidad.}
+
+El Etiquetado lleva consigo un problema implícito: la heterogeneidad semántica. En \cite{golder} se comentan algunos aspectos semánticos y cognitivos sobre el proceso de clasificación. Básicamente, se establecen tres problemas principales: polisemia, sinonimia y variaciones del nivel básico.
+
+La polisemia es el problema que se produce debido a que a una palabra tiene varios significados. Al realizar una búsqueda sobre este término, un sistema no sería capaz de distinguir estos significados diferentes; y por tanto, se obtienen más resultados de los esperados, ya que muchos de ellos pertenecen a alguno de los otros significados del término. Esto deriva en un problema de incorrección, pues se obtienen resultados que no deberían obtenerse. Además, este problema es equivalente al producido por homonimia (en concreto, por homografía).
+
+La sinonimia es el problema que se produce debido a que diferentes palabras tienen el mismo significado. Al realizar una búsqueda sobre alguno de estos términos, el sistema sólo será capaz de devolver aquellos resultados que coincidan con el término con el que se ha hecho la búsqueda, obviando todos los resultados de los otros términos sinónimos a éste. Esto deriva en un problema de incompletitud, pues no se obtienen todos los resultados esperados. Además de la definición de sinonimia en lingüística, este problema es equivalente a otros problemas derivados de la escritura propia del usuario. Por ejemplo, las etiquetas \emph{gato} y \emph{gatos} son sinónimos en la práctica, al igual que \emph{para-leer} y \emph{para\_leer}.
+
+Finalmente, existe un problema derivado de las variaciones del nivel básico. En \cite{tanaka} se explica que el nivel básico asocia un problema que surge al existir diferentes términos que describen un único objeto en el rango desde lo más general a lo más específico; el nivel básico es precisamente el que se asocia mayormente con las interacciones humanas. Por ejemplo, \emph{animal}, \emph{perro} y \emph{dálmata} corresponde a la misma categoría, desde la más general a la más concreta. En el ejemplo anterior, para la mayoría de la gente, el nivel básico se establecería en el término \emph{perro}. Sin embargo, existen algunas variaciones sistemáticas en lo que cada individuo considera el nivel básico. Y estas variaciones plantearían este problema, cuya principal consecuencia es incompletitud, aunque también incorrección.
+
+No hay que olvidar que el proceso de etiquetado es básicamente un proceso de interpretación, en el que cada usuario categoriza el contenido en función de una serie de parámetros personales que, en algunos casos, no corresponden con los parámetros del resto.
+
+En \cite{algoritmo}, se describen los problemas anteriores de una forma más formal, en el ámbito del campo de trabajo de los sistemas de etiquetado. Así pues, se tiene:
+\begin{itemize}
+	\item Hetereogeneidad del Conocimiento dependiente del Contexto (CDKH): Es la limitación producida debido a que una misma etiqueta se refiera a diferentes términos.
+	\item Ambigüedad Clásica (CA): Es la limitación producida por las ambigüedades heredadas del lenguaje natural y la elección del nivel básico (\cite{tanaka}) por parte de cada usuario.
+\end{itemize}
+
+Por una parte, CA no representa un problema crítico, puesto que el propio objeto (la URL) puede ayudar a desambiguar el significado del término. De hecho, una contextualización de las etiquetas en forma de grafo, puede ayudar a distinguir estos diferentes significados. Sin embargo, CDKH está asociado a estructuras de conceptos que los usuarios no representan en el sistema, aunque métodos de FCA pueden extraer, y por tanto, este problema debe ser tratado con más cautela, y corregido con métodos formales.
+
+Finalmente, hay que comentar que el problema de CDKH es debido a la finalidad con la que se use cierta etiqueta. En \cite{golder}, se definen diferentes tipos de etiquetas:
+\begin{itemize}
+	\item Identificación del tema que trata: los temas que la URL trata. Por ejemplo \emph{programación}.
+	\item Identificación de lo que es: lo que es exactamente la URL. Por ejemplo \emph{libro} o \emph{artículo}.
+	\item Identificación del propietario o el creador de la URL. Por ejemplo \emph{Shakespeare}.
+	\item Refinación de las categorías. En ocasiones, ciertas etiquetas se usan para complementar la etiquetación de las ya existente. Por ejemplo, números.
+	\item Identificación de características: adjetivos, que son la opinión del usuario sobre la URL. Por ejemplo \emph{gracioso} o \emph{estúpido}.
+	\item AutoReferencia: del propio usuario. Por ejemplo \emph{mi-libro}.
+	\item Etiquetas de organización: ciertas etiquetas se pueden usar para agrupar ciertas URL con un fin común. Por ejemplo \emph{para-leer} o \emph{trabajo-pendiente}.
+\end{itemize}
+
+
+
+\section{El Etiquetado y la Conciliación de Conceptos.}
+
+Como se ha visto a lo largo del capítulo, en este trabajo se han elegido las folksonomías, y más concretamente los sistemas de etiquetado, como sistemas en los que existen un entorno semantizado, debido a la semántica que las etiquetas aportan a cada objeto del sistema. 
+
+Se ha elegido esta forma de clasificar debido a las ventajas que presenta frente a otros métodos, como taxonomías u ontologías. Sin embargo, se ha explicado los problemas asociados de heterogeneidad y ambigüedad de los términos.
+
+Debido a estos problemas, se han elegido métodos basados en Análisis Formal de Conceptos (AFC) para minimizar las consecuencias de estas ambigüedades semánticas, y establecer un marco de trabajo formal con el que realizar las diferentes operaciones.
+
+La Conciliación de Conceptos es el proceso por el cual, aplicando técnicas de AFC, se van a extraer conceptos formales de los sistemas de etiquetado, tarea que se realizará para cada usuario. Estos conceptos formales nos permitirán calcular un conocimiento común entre los usuarios, que podrá ser usado posteriormente en diferentes tareas: navegación (semántica) entre usuario, refinamiento de búsquedas (semánticas), etc...

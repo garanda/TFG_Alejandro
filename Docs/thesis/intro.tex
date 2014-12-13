@@ -1,0 +1,93 @@
+\chapter*{Introducción}
+\label{intro:intro}
+\addcontentsline{toc}{chapter}{Introducción.}
+
+En ocasiones, la búsqueda de información sobre ciertos temas en Internet se convierte en una ardua tarea, debido a que los resultados que encontramos no son demasiado relevantes. Esto se debe a numerosas razones. En general, se puede decir que los parámetros con los que ajustamos la búsqueda no termina de ser los más apropiados para conseguir los resultados que esperamos; bien porque no hemos sabido ajustar correctamente las palabras claves en nuestra búsqueda, y por tanto, los resultados obtenidos versan sobre otros temas distintos; o bien porque, aunque estas palabras claves sí sean relativamente correctas, los resultados obtenidos son más específicos o más generales de lo que buscamos, y por tanto estos resultados tampoco son conveniententes. Desde el punto de vista de búsquedas en contextos \emph{semantizados} \footnote{Se entiende por contextos \emph{semantizados} a aquellos que están marcados con ciertos metadatos semánticos.}, podemos decir más concretamente que si los resultados encontrados no son apropiados, es porque el conocimiento con el que hemos ajustado la búsqueda es incompleto, o incluso incorrecto.
+
+Una posible solución para solventar, o minimizar este problema, podría ser el uso del conocimiento de otros usuarios, además del conocimiento propio del usuario, que ya se dispone. De esta forma, una búsqueda podría ser más completa, ya que el usuario no es el único que aporta conocimiento a los parámetros de dicha búsqueda, sino que éstos se enriquecen con el conocimiento de otros usuarios. Por tanto, el problema se traslada a encontrar relaciones entre usuarios y elegir qué conocimiento será usado para complementar el conocimiento propio de cada usuario.
+
+En este trabajo se propone una solución formal a este problema, en el que se intenta complementar los diferentes conocimientos de cada usuario mediante implicaciones lógicas, que permitan establecer una serie de reglas entre ellos. El conocimiento común que genera un par de usuarios es lo que llamamos {\bf Conciliación de Conocimiento}, como se cita en \cite{algoritmo}. Con este conocimiento conciliado se dispone de una herramienta que puede enriquecer semánticamente cualquier búsqueda. Igualmente, es interesante concebir este conocimiento conciliado desde el punto de vista de la navegación entre usuarios, o entre la información de los mismos, que es, al fin y al cabo, otra forma de buscar información en Internet. Este conocimiento conciliado entre dos usuarios representa un conocimiento aceptado por ambos, ya que está basado en implicaciones lógicas, que aportan un trasfondo formal a este conocimiento. Por tanto, este conocimiento conciliado es equivalente a un contexto común entre ambos usuarios. La navegación semántica entre estos usuarios pasa por un punto intermedio, que es precisamente este conocimiento conciliado.
+
+En este trabajo se propone un método de conciliación del conocimiento en sistemas multiusuario, centrando el caso de estudio en los sistemas de etiquetado. Este método se basa en la utilización de cálculos basados en Análisis Formal de Conceptos (se utilizarán técnicas descritas en \cite{afc}), y ha sido implementado en una estructura de Sistema MultiAgente (SMA) en una plataforma JADE (consutar \cite{jade}).
+
+
+
+
+\section*{Internet, Datos e Información.}
+\addcontentsline{toc}{section}{Internet, Datos e Información}
+
+Hoy en día, Internet se ha convertido en una herramienta básica en nuestro día a día. La generación de contenido se produce de una forma masiva, y el volumen de contenido generado crece en forma exponencial; es decir, en cada momento, en Internet se genera una cantidad de contenido mucho mayor que el contenido que se ha generado previamente. Este crecimiento exponencial de Internet es una realidad, y existen algunos problemas que derivan de él, como la gestión de esa cantidad tan grande de contenido.
+
+En los últimos tiempos, este crecimiento del contenido se ha potenciado debido al crecimiento de la Web 2.0, que aporta potentes tecnologías para compartir este contenido con el resto de usuarios (ver \cite{algoritmo} y \cite{mowento}). Ejemplo de ello, es el gran número de herramientas sociales (redes sociales, sistemas de etiquetado, sistemas de compartición de ficheros, etc.), en los que se establece cierta conexión entre los usuarios, y en los que, cada vez más, se integran contenidos multimedia junto con el formato de texto plano que siempre ha existido. El hecho de que estos contenidos multimedia se conviertan en uno de los pilares básicos de esta Web 2.0, trae consigo ciertas consecuencias:
+
+\begin{itemize}
+	\item La generación de contenido se vuelve cada vez más masiva, debido al hecho de que el contenido multimedia es más amigable para el usuario. Los avances tecnológicos han propiciado este hecho, debido a que las fronteras de Internet llegan cada vez a más usuarios, y las velocidades de acceso a éste son cada vez más rápidas, y esto hace viable esta generación tan masiva de este contenido, así como su visualización posterior.
+	\item El contenido multimedia es, si cabe, más difícil de gestionar y procesar que cualquier contenido en texto plano. Por una parte, el texto plano responde a unos formatos más restringidos, por lo que se podría considerar casi estándar. Sin embargo, el contenido multimedia se clasifica en diferentes tipos (audio, vídeo, imágenes, etc.), en los que cada tipo se clasifica en numerosos formatos. Por tanto, las tareas de gestión son bastante más complicadas, puesto que hay que enfrentarse a diferentes tareas en función del tipo de contenido y del formato del mismo. Por otra parte, el procesado de este contenido también es más complicado. Una búsqueda en un texto plano es, a grosso modo, una tarea de coincidencia de cierta secuencia de caracteres; aunque hoy en día, estas tareas son mucho más complejas que esa simple idea. Sin embargo, en cualquier caso, es una tarea con un coste computacional bajo, y por tanto, rápida. En cambio, en el ámbito del contenido multimedia esta tarea es mucho más complicada. Un símil equivalente podría ser buscar cierta forma en una imágen, cierto sonido en un audio o cierto fotograma en un vídeo. Estos ejemplos son casos de estudio actualmente, y la carga computacional de ellos es de un orden muy superior que el ejemplo de búsqueda en texto plano. En conclusión, el procesado de este contenido es más complicado.
+\end{itemize}
+
+Otra característica de estas herramientas 2.0 es la posibilidad de relación social que la propia herramienta ofrece al usuario para que se relacione con otros usuarios. Al igual que el crecimiento del contenido, se produce también un crecimiento en cuanto al número de relaciones entre usuarios, que cada vez más, van estableciendo relaciones con otros usuarios, lo que, dependiendo del sistema, permite acceder a su contenido, compartir contenido común, etc.
+
+De una forma abstracta, esta idea puede entenderse como un concepto de grafo, en el que se represente todo este contenido, mediante nodos, y todas estas relaciones entre usuarios, mediante aristas. Por una parte, a medida que se produce un crecimiento en cuanto a la generación de contenido, encontraríamos un crecimiento en el número de nodos del grafo. Por otra, el crecimiento de las relaciones sociales en el ámbito de la Web 2.0, equivale a un crecimiento del número de aristas de este grafo abstracto que representa todo el conjunto de la web (o simplificadamente, representa a un sistema concreto: un sistema de etiquetado concreto, una red social concreta, etc.).
+
+En conclusión, el crecimiento de Internet hoy en día lleva consigo:
+\begin{enumerate}
+	\item Una generación masiva de contenido, en gran parte multimedia.
+	\item Un problema de procesado de este contenido, debido al gran volumen de los mismo. Y un problema asociado al contenido multimedia, debido a la propia naturaleza de este contenido.
+	\item Un conjunto de relaciones entre usuarios de gran volumen.
+\end{enumerate}
+
+Es obvio que un trabajo de procesamiento o gestión sobre este compendio de contenido es inviable si se realiza a nivel global. En esta línea, hablaremos de {\bf datos} cuando, en casos como el anteriormente descrito, se disponga de una gran cantidad de contenido pero que es difícil de procesar, analizar y tratar. Sin embargo, es posible añadir cierta metainformación sobre estos datos, para conseguir que estas tareas se puedan llevar a cabo con relativa viabilidad. Con esta metainformación, todo el contenido se puede clasificar más fácilmente, y esta clasificación posibilita un procesado posterior a nivel global que sea viable en cuanto a tiempos de ejecución o carga computacional. Esta metainformación será, en su mayoría, ciertos metadatos semánticos que se añadan a los datos. En el caso de contenido marcados semánticamente, hablaremos de {\bf información}.
+
+
+
+
+
+
+\section*{Motivación y Objetivos.}
+\addcontentsline{toc}{section}{Motivación y Objetivos}
+
+En la sección anterior, se introduce la posibilidad del marcado semántico (mediante metadatos añadidos al contenido), para convertir los \emph{datos} en \emph{información}. Una vez hecho esto, las posibilidades de procesado a posteriori de esta información son innumerables.
+
+En este trabajo se propone el uso de los Sistemas de Etiquetado, en los que encontramos información marcada semánticamente, con etiquetas, como se verá en el capítulo~\ref{cap:capitulo3}; para llevar a cabo un procesado semántico con el que obtener un conocimiento conciliado entre varios usuarios. Inicialmente se propone conseguir este conocimiento conciliado por pares de usuarios que formen parte del sistema, si bien, en un futuro se puede ampliar a un concepto superior de conocimiento conciliado global. La principal motivación de este trabajo es encontrar un método de conciliación que sea aplicable a sistemas de etiquetado de este tipo, aunque en un futuro se podría ampliar a otro tipo de sistemas. Estas conciliaciones representan un método de navegación entre usuarios, puesto que el conocimiento conciliado que se obtenga para cada par de usuarios, representará un conocimiento común que ambos usuarios aceptan, y por tanto, puede ser una herramienta útil de navegación entre ellos. En un futuro, este conocimiento conciliado podría ser usado en otras tareas como refinamientos de búsquedas, depuración semántica, etc.
+
+Los principales objetivos de este trabajo son:
+
+\begin{itemize}
+	\item Formalizar el conocimiento de los Sistemas de Etiquetado.
+	\item Extraer los distintos elementos de AFC de estos sistemas.
+	\item Implantar un método de conciliación a escala global para todo el conjunto de alguno de estos sistemas.
+	\item Analizar los resultados y proponer soluciones futuras que aporten una funcionalidad clara y útil a estos sistemas.
+\end{itemize}
+
+
+
+
+
+\section*{Solución Propuesta.}
+\addcontentsline{toc}{section}{Solución Propuesta}
+
+La solución propuesta es un Sistema MultiAgente (SMA) implementado en JADE (ver \cite{jade}), en el que se extraiga el conocimiento de un caso práctico concreto, y calcule un conocimiento conciliado para este sistema. El caso práctico concreto que utilizaremos será un subconjunto de datos de Delicious (ver \cite{delicious}). En el SMA, un conjunto de agentes, que representan a los usuarios del sistema, negociarán entre ellos para conciliar su conocimiento con otros usuarios, en función de su disponibilidad y de la prioridad que tengan en realizar otras conciliaciones con terceros. A medida que avance la ejecución del SMA, se irán produciendo múltiples conciliaciones de forma paralela, de forma que el conocimiento conciliado sea cada vez mayor; y por tanto, se enriquecerá este conocimiento común. Este conocimiento conciliado será almacenado, de forma que se puedan realizar cálculos o extraer conclusiones posteriormente.
+
+En el capítulo~\ref{cap:capitulo6} se comenta la estructura, componentes y funcionamientos de este SMA. En los capítulos anteriores se comentarán algunas técnicas y herramientas necesarias para llevarlo a cabo, o ciertas formalizaciones previas que justifican el trasfondo formal de este trabajo.
+
+
+
+
+
+
+\section*{Estructura de la memoria.}
+\addcontentsline{toc}{section}{Estructura de la memoria}
+
+Esta memoria se estructura en varios capítulos, con la siguiente distribución de los temas trabajados:
+
+\begin{itemize}
+	\item Capítulo~\ref{cap:capitulo1}. Se presenta el Estado del arte en el que se detalla los diferentes modelos de clasificación de la información en Internet, y se plantean las diferentes problemáticas de cada uno de estos modelos.
+	\item Capítulo~\ref{cap:capitulo2}. Se formalizan las nociones mátematicas de Análisis Formal de Conceptos (AFC) que sirven como soporte formal en este trabajo.
+	\item Capítulo~\ref{cap:capitulo3}. Se introducen los Sistemas de Etiquetado, que serán los casos de estudio concretos de este trabajo, viendo su estructura y la extracción formal de los conceptos de AFC vistos en el capítulo anterior.
+	\item Capítulo~\ref{cap:capitulo4}. Se explica el Algoritmo de Conciliación, que permite conciliar el conocimiento de un par de usuarios.
+	\item Capítulo~\ref{cap:capitulo5}. Se describen las características del Conjunto de Datos con el que llevaremos a cabo los procesos de prueba empíricamente.
+	\item Capítulo~\ref{cap:capitulo6}. Se explica el Sistema MultiAgente (SMA) que se plantea como solución en este trabajo: comportamiento, estructura y componenentes.
+	\item Capítulo~\ref{cap:capitulo7}. Se detallan los resultados obtenidos en una prueba empírica llevada a cabo, y se analizan estos resultados.
+	\item Capítulo~\ref{cap:capitulo8}. Finalmente, se comentan las conclusiones obtenidas, así como los puntos de trabajo futuro.
+	\item Bibliografía.
+\end{itemize}
